@@ -3,17 +3,18 @@
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo" />
       <a-menu theme="dark" mode="inline" :default-selected-keys="['']">
-        <a-menu-item key="1" @click="click">
+        <a-menu-item key="1" @click="clickPublishBlog">
           <a-icon type="file-markdown" />
-          <span>文章管理</span>
+          <span>博文发布</span>
         </a-menu-item>
-        <a-menu-item key="2">
-          <!-- <a-icon type="video-camera" /> -->
-          <span>nav 2</span>
+        <a-menu-item key="2" @click="clickManagementBlog">
+          <a-icon type="file-markdown" />
+          <span>博文管理</span>
         </a-menu-item>
-        <a-menu-item key="3">
+        <a-menu-item key="3" @click="clickBlogStatistics">
           <!-- <a-icon type="upload" /> -->
-          <span>nav 3</span>
+          <a-icon type="file-markdown" />
+          <span>博文统计</span>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -39,9 +40,15 @@ export default {
     }
   },
   methods:{
-    click(){
+    clickPublishBlog(){
       console.log('saasdf')
       this.$router.replace('/fblog/management/edit')
+    },
+    clickManagementBlog(){
+      this.$router.replace('/fblog/management/management')
+    },
+    clickBlogStatistics(){
+      this.$router.replace('/fblog/management/statistic')
     }
   }
 };
