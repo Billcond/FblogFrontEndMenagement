@@ -41,7 +41,7 @@ const CollectionCreateForm = {
         <a-form-item class='collection-create-form_last-form-item'>
           <a-radio-group
             v-decorator="[
-              'modifier',
+              'type',
               {
                 initialValue: 'private',
               }
@@ -85,7 +85,18 @@ export default {
         }
         //这里将来请求数据库等
         values.content = this.$props.subContent;
+        values.creteTime = new Date();
         console.log('Received values of form: ', values);
+
+        //axios将数据传递给数据库
+        this.postRequest('/test',values).then(resp=>{
+          if(resp){
+            console.log("有响应------------------",resp)
+          }else{
+            console.log('无响应')
+            return false;
+          }
+        })
         form.resetFields();
         this.visible = false;
       });

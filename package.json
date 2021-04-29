@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^1.7.4",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "simplemde": "^1.11.2",
