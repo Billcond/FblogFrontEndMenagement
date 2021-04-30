@@ -85,11 +85,13 @@ export default {
         }
         //这里将来请求数据库等
         values.content = this.$props.subContent;
-        values.creteTime = new Date();
+        //这里不这样  传入数据库  时间就出错了
+        values.createTime = new Date().toLocaleString();
+        console.log('当前的时间',values.createTime)
         console.log('Received values of form: ', values);
 
         //axios将数据传递给数据库
-        this.postRequest('/test',values).then(resp=>{
+        this.postRequest('/users/addArticle',values).then(resp=>{
           if(resp){
             console.log("有响应------------------",resp)
           }else{
