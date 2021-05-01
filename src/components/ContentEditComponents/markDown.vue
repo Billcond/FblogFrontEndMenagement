@@ -43,8 +43,9 @@ export default {
     }
   },
   watch: {
+      /**原来就有的内容 */
     value(val) {
-      console.log(val)
+      console.log('最底层组件监听的内容',val)
       if (val === this.simplemde.value() && !this.hasChange) return
       this.simplemde.value(val)
     }

@@ -55,25 +55,25 @@ export default {
         })
     console.log('ContentManagement,created',this.data,this.$el)
   },
-  beforeMount(){
-      console.log("ContentManagement,beforeMount()",this.data,this.$el)
-  },
-  mounted(){
-      console.log("ContentManagement,mounted",this.data,this.$el)
-  },
-  beforeUpdate(){
+//   beforeMount(){
+//       console.log("ContentManagement,beforeMount()",this.data,this.$el)
+//   },
+//   mounted(){
+//       console.log("ContentManagement,mounted",this.data,this.$el)
+//   },
+//   beforeUpdate(){
        
-      console.log("ContentManagement,beforeUpdate",this.data,this.$el)
-  },
-  updated(){
-      console.log("ContentManagement,update",this.data,this.$el);
-  },
-  beforeDestroy(){
-      console.log("ContentManagement,beforeDestory",this.data,this.$el);
-  },
-  destroyed(){
-      console.log("ContentManagement,destoryed",this.data,this.$el);
-  }
+//       console.log("ContentManagement,beforeUpdate",this.data,this.$el)
+//   },
+//   updated(){
+//       console.log("ContentManagement,update",this.data,this.$el);
+//   },
+//   beforeDestroy(){
+//       console.log("ContentManagement,beforeDestory",this.data,this.$el);
+//   },
+//   destroyed(){
+//       console.log("ContentManagement,destoryed",this.data,this.$el);
+//   }
 };
 
 </script>

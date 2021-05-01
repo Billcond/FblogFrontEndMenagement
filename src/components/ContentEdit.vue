@@ -22,7 +22,8 @@
             </markdownEditor>
         <!-- <button @click="markdown2Html">To HTML</button>
         <div v-html="html"></div> -->
-         <markDownEnd :sub-content="content"></markDownEnd>
+        <!---->
+         <markDownEnd :sub-create-content="content"></markDownEnd>
     </a-layout-content>
 </template>
 
@@ -56,33 +57,40 @@ export default {
       html: '',
     }
   },
-     beforeCreate(){
-       console.log("==============ContentEdit==============")
-       console.log("============================")
-       console.log("============================")
-    console.log('beforeCreate',this.data,this.$el)
-  },
-  created(){//实例化好了 此时已经可以读取到原来的data中的数据了
-    console.log('ContentEditcreated',this.data,this.$el)
-  },
-  beforeMount(){
-      console.log("ContentEditbeforeMount()",this.data,this.$el)
-  },
-  mounted(){
-      console.log("ContentEditmounted",this.data,this.$el)
-  },
-  beforeUpdate(){
-      console.log("ContentEditbeforeUpdate",this.data,this.$el)
-  },
-  updated(){
-      console.log("ContentEditupdate",this.data,this.$el);
-  },
-  beforeDestroy(){
-      console.log("ContentEditbeforeDestory",this.data,this.$el);
-  },
-  destroyed(){
-      console.log("ContentEditdestoryed",this.data,this.$el);
-  }
+  watch:{
+    'content':function(obj){
+          //this.content = obj;
+          console.log('主界面中更改的内容',this.content)
+        }
+    }
+  ,
+  // beforeCreate(){
+  //   console.log("==============ContentEdit==============")
+  //   console.log("============================")
+  //   console.log("============================")
+  //   console.log('beforeCreate',this.data,this.$el)
+  // },
+  // created(){//实例化好了 此时已经可以读取到原来的data中的数据了
+  //   console.log('ContentEditcreated',this.data,this.$el)
+  // },
+  // beforeMount(){
+  //     console.log("ContentEditbeforeMount()",this.data,this.$el)
+  // },
+  // mounted(){
+  //     console.log("ContentEditmounted",this.data,this.$el)
+  // },
+  // beforeUpdate(){
+  //     console.log("ContentEditbeforeUpdate",this.data,this.$el)
+  // },
+  // updated(){
+  //     console.log("ContentEditupdate",this.data,this.$el);
+  // },
+  // beforeDestroy(){
+  //     console.log("ContentEditbeforeDestory",this.data,this.$el);
+  // },
+  // destroyed(){
+  //     console.log("ContentEditdestoryed",this.data,this.$el);
+  // }
 
 };
 </script>

@@ -24,7 +24,7 @@
         
         <!-- <button @click="markdown2Html">To HTML</button>
         <div v-html="html"></div> -->
-         <markDownEnd :sub-msg="re"></markDownEnd>
+         <markDownEnd :sub-modify-msg="re"></markDownEnd>
   </a-layout-content>
 </template>
 
@@ -71,11 +71,12 @@ export default {
 //     console.log('beforeCreate',this.data,this.$el)
 //   },
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
-  alert('heihei')
     console.log('========嘿嘿===========',this.$props.articleContent)
+    
     this.content = this.$props.articleContent.content;
     this.re.content = this.content;
     this.re.title = this.$props.articleContent.title;//获取到title
+    this.re.buttonName = "确认编辑"
   },
 //   beforeMount(){
 //       console.log("ContentEditbeforeMount()",this.data,this.$el)

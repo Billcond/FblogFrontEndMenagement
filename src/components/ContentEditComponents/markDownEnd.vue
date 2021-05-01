@@ -79,7 +79,7 @@ export default {
       content:"",
     };
   },
-  props:['sub-msg'],//下面进行整合发送时候用到
+  props:['sub-modify-msg','sub-create-content'],//下面进行整合发送时候用到
   methods: {
     showModal() {
       this.visible = true;
@@ -93,18 +93,18 @@ export default {
         if (err) {
           return;
         }
-        //console.log('=========！！！！！！！！！！！！！！！===',this.$props)
-        //这里将来请求数据库等
-        //这里是打印出来查看才直到是subContent  猜测是因为Porp定义的是标签-会转成驼峰规则
-        values.content = this.content;
-        //这里不这样  传入数据库  时间就出错了  
         values.createTime = new Date().toLocaleDateString()+' '+new Date().toTimeString().split(' ')[0];
-        console.log('当前的时间',values.createTime)
         console.log('Received values of form: ', values); //这里的value是弹出框种的内容
+        if(this.$props.subModifyMsg!=undefined){//说明是修改的子组件传递过来的内容
+            this.content = this.$props.subModifyMsg.content;
+            values.content = this.content;
+            alert("确认编辑")
+        }
+        if(this.$props.subCreateContent!=undefined){//说明是发布文章的子组件传递过来的内容
+            this.content = this.$props.subCreateContent;
+            values.content = this.content;
 
-        //axios将数据传递给数据库
-        if(this.buttonName=="博文发布"){
-          this.postRequest('/articles/addArticle',values).then(resp=>{
+            this.postRequest('/articles/addArticle',values).then(resp=>{
             if(resp){
               console.log("有响应------------------",resp)
             }else{
@@ -113,46 +113,65 @@ export default {
             }
           })
         }
-        if(this.buttonName=="确认编辑"){
-          alert("确认编辑")
-        }
         
         form.resetFields();
         this.visible = false;
       });
     },
   },
+   watch:{
+    //在这里监听没用  因为一开始值create初始化了一次  所以应该再这里监听父组件传递过来的内容
+    'content':function(obj){
+        console.log('在end子组件中获取到的内容',obj)
+        this.content = obj;
+    },
+    'subCreateContent':function(obj){//
+      console.log('父组件传递给过来更改的内容了嘛',obj)
+    },
+    'subModifyMsg':function(obj){
+      console.log("父组件中修改的内容的穿过来的值",obj)
+    }
+  },
   beforeCreate(){
-       console.log("======！！！！！！！！！！！！=========")
-       console.log("====！！！！！！！！！！！====")
-       console.log("====！！！！！！！！！！！！1=====")
+      //  console.log("======！！！！！！！！！！！！=========")
+      //  console.log("====！！！！！！！！！！！====")
+      //  console.log("====！！！！！！！！！！！！1=====")
     //console.log('=======创建钱钱钱======',this.$props.subButtonName)
     //这里的测试也符合vue的生命周期
   },
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
-    // if(this.$props.subButtonName!=undefined)
-    this.buttonName = this.$props.subMsg.buttonName;
-    this.titlevalue = this.$props.subMsg.title;
-    this.content = this.$props.subMsg.content;
+  //这里出错的原因是因为created只会在一开始执行一次  
+  //后面父组件中的内容更改后  子组件在这里得不到更新  所以导致不正确 
+  //这也说明了狗子函数只会在一开始执行一些事情   
+  //这么简单的问题卡了这么久
+  //这里再watch中监听一下 this.$props.subCreateContent就性了
+    // this.buttonName = this.$props.subModifyMsg.buttonName;
+    if(this.$props.subModifyMsg!=undefined){//说明是需要修改的内容
+      this.buttonName = this.$props.subModifyMsg.buttonName;
+      this.titlevalue = this.$props.subModifyMsg.title;
+
+    }
+    console.log('???????????????????????????????????',this.buttonName)
+    console.log('!!!!!!!!!!!!!!!wwwwwwwwwwccccccccccccccccccc',this.titlevalue)
     console.log('=======创建吼吼吼=========',this.$props)
   },
-  beforeMount(){
-      console.log("======挂载钱钱钱============",this.$props.subButtonName)
-  },
-  mounted(){
-      console.log("========挂载吼吼吼==============",this.$props.subButtonName)
-  },
-  beforeUpdate(){
-      console.log("========。。。。。。。。。。。。。。==========",this.$props.subButtonName)
-  },
-  updated(){
-      console.log("========。。。。。。。。。。。。。。==========",this.$props.subButtonName);
-  },
-  beforeDestroy(){
-      console.log("ContentEditbeforeDestory",this.data,this.$el);
-  },
-  destroyed(){
-      console.log("ContentEditdestoryed",this.data,this.$el);
-  }
+  // beforeMount(){
+  //     console.log("======挂载钱钱钱============",this.$props.subButtonName)
+  // },
+  // mounted(){
+  //     console.log("========挂载吼吼吼==============",this.$props.subButtonName)
+  // },
+  // beforeUpdate(){
+  //     console.log("========。。更新前。。。。。==========",this.content)
+  // },
+  // updated(){
+  //     console.log("========。。。更新后。。。。。。。==========",this.content);
+  // },
+  // beforeDestroy(){
+  //     console.log("ContentEditbeforeDestory",this.data,this.$el);
+  // },
+  // destroyed(){
+  //     console.log("ContentEditdestoryed",this.data,this.$el);
+  // }
 };
 </script>

@@ -128,6 +128,7 @@ export default {
       }
   },
   watch:{
+    //异步获取数据后读取
     'articles':function(obj){
           this.data = [];
         //拿到之后更改模板的值
@@ -153,26 +154,26 @@ export default {
     console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
 
   },
-  beforeMount(){
-      console.log("ContentManagementContent,beforeMount()",this.data,this.$el)
-      console.log("ContentManagementContent,beforeMount父组件传递过东西来了嘛!!!!==============",this.$props.articles)
-  },
-  mounted(){
-      console.log("ContentManagementContent,mounted",this.data,this.$el)
-            console.log("ContentManagementContent,mounted父组件传递过东西来了嘛!!!!==============",this.$props.articles)
-  },
-  beforeUpdate(){
-      console.log("ContentManagementContent,beforeUpdate",this.data,this.$el)
-  },
-  updated(){
-      console.log("ContentManagementContent,update",this.data,this.$el);
+  // beforeMount(){
+  //     console.log("ContentManagementContent,beforeMount()",this.data,this.$el)
+  //     console.log("ContentManagementContent,beforeMount父组件传递过东西来了嘛!!!!==============",this.$props.articles)
+  // },
+  // mounted(){
+  //     console.log("ContentManagementContent,mounted",this.data,this.$el)
+  //           console.log("ContentManagementContent,mounted父组件传递过东西来了嘛!!!!==============",this.$props.articles)
+  // },
+  // beforeUpdate(){
+  //     console.log("ContentManagementContent,beforeUpdate",this.data,this.$el)
+  // },
+  // updated(){
+  //     console.log("ContentManagementContent,update",this.data,this.$el);
 
-  },
-  beforeDestroy(){
-      console.log("ContentManagementContent,beforeDestory",this.data,this.$el);
-  },
-  destroyed(){
-      console.log("ContentManagementContent,destoryed",this.data,this.$el);
-  }
+  // },
+  // beforeDestroy(){
+  //     console.log("ContentManagementContent,beforeDestory",this.data,this.$el);
+  // },
+  // destroyed(){
+  //     console.log("ContentManagementContent,destoryed",this.data,this.$el);
+  // }
 };
 </script>
