@@ -41,7 +41,6 @@ export default {
   },
   methods:{
     clickPublishBlog(){
-      console.log('saasdf')
       this.$router.replace('/fblog/management/edit')
     },
     clickManagementBlog(){

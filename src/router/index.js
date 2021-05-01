@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import ContentEdit from '../components/ContentEdit'
 import ContentManagement from "../components/ContentManagement"
 import ContentStatistic from "../components/ContentStatistic"
+import ContentManagementModify from "../components/ContentManagementComponents/ContentManagementModify"
 
 Vue.use(VueRouter)
 
@@ -24,7 +25,14 @@ const routes = [
       },{
         path:'/fblog/management/management',
         name:'ContentManagement',
-        component:ContentManagement
+        component:ContentManagement,
+        children:[
+          {
+            path:'/fblog/management/modify',
+            name:'ContentManagementModify',
+            component:ContentManagementModify,
+          }
+        ]
       },{
         path:'/fblog/management/statistic',
         name:'ContentStatistic',

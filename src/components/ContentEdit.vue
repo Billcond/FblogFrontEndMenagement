@@ -1,6 +1,6 @@
 <template>
     <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '60vh' }"
+        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '80vh' }"
       >
 
        
@@ -58,6 +58,33 @@ export default {
       html: '',
     }
   },
+     beforeCreate(){
+       console.log("==============ContentEdit==============")
+       console.log("============================")
+       console.log("============================")
+    console.log('beforeCreate',this.data,this.$el)
+  },
+  created(){//实例化好了 此时已经可以读取到原来的data中的数据了
+    console.log('ContentEditcreated',this.data,this.$el)
+  },
+  beforeMount(){
+      console.log("ContentEditbeforeMount()",this.data,this.$el)
+  },
+  mounted(){
+      console.log("ContentEditmounted",this.data,this.$el)
+  },
+  beforeUpdate(){
+      console.log("ContentEditbeforeUpdate",this.data,this.$el)
+  },
+  updated(){
+      console.log("ContentEditupdate",this.data,this.$el);
+  },
+  beforeDestroy(){
+      console.log("ContentEditbeforeDestory",this.data,this.$el);
+  },
+  destroyed(){
+      console.log("ContentEditdestoryed",this.data,this.$el);
+  }
 
 };
 </script>
