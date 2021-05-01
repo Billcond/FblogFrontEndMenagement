@@ -1,24 +1,37 @@
-<template>
-<a-layout-content>
+<template >
+<a-layout-content v-if="modify">
+    <content-management-modify :articleContent="modifyArticle"></content-management-modify>
+</a-layout-content>
+<a-layout-content v-else>
     <content-management-header/>
     <!--说明父组件先将数据传递给了子组件，即使在create中已经请求了  但它是异步的  导致了传递不正确
     但是赋值的时候已经更改了数据  会触发响应式，这里并没有更新-->
-    <content-management-content :articles = "allArticles">
-    </content-management-content>
-    <router-view></router-view>
+    <content-management-content :articles = "allArticles" @modifyevent="midifyEvent"></content-management-content>
 </a-layout-content>
 </template>
 
 
 <script>
+import ContentManagementModify from './ContentManagementComponents/ContentManagementModify.vue';
 import ContentManagementContent from './ContentManagementComponents/ContentManagementContent.vue';
 import ContentManagementHeader from './ContentManagementComponents/ContentManagementHeader.vue';
 export default {
-  components:{ContentManagementContent, ContentManagementHeader},
+  components:{ContentManagementContent, ContentManagementHeader, ContentManagementModify},
   data () {
     return {
         //刚刚一直不成功，但是后来为啥成功了
         allArticles: "",
+        modify:false,
+        modifyArticle:""
+    }
+  },
+  methods:{
+      //编辑时间传递到父组件
+    midifyEvent(data){//原本向通过父组件来实现兄弟组件的通信  现在看来  这里的父子还是有必要的  下一步通过Bus来实现兄弟的通信
+        alert("子组件传递父组件值成功")
+        console.log("传递的值是",data)
+        this.modifyArticle = data;//更改的内容 需要传递给子组件
+        this.modify = true;
     }
   },
    beforeCreate(){

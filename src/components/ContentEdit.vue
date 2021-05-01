@@ -20,8 +20,6 @@
             toolbar:
             >
             </markdownEditor>
-
-        
         <!-- <button @click="markdown2Html">To HTML</button>
         <div v-html="html"></div> -->
          <markDownEnd :sub-content="content"></markDownEnd>
@@ -36,7 +34,7 @@
 //都可以写成 markdown-edit
 import markdownEditor from './ContentEditComponents/markDown'
 import markDownEnd from "./ContentEditComponents/markDownEnd"
-const content = `
+var content = `
 **this is test**
 * vue
 * element
@@ -50,7 +48,7 @@ export default {
   components: { markdownEditor,markDownEnd},
   data () {
     return {
-      content: content,
+      content: content,//键值对
       editHeight:90,
       editZIndex:20,
       editautufocus:false,

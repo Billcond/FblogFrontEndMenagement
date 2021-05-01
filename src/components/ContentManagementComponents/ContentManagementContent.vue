@@ -10,9 +10,8 @@
         {{ tag.toUpperCase() }}
       </a-tag>
     </span>
-
     <span slot="action" slot-scope="text, record">
-      <a >编辑</a>
+      <a @click = "clickModify(text,record)">编辑</a>
       <a-divider type="vertical" />
       <a  @click = "clickDelete(text,record)">删除</a>
     </span>
@@ -122,6 +121,11 @@ export default {
             }
           }
       },
+      clickModify(text,scope){
+        alert("编辑")
+        this.$emit('modifyevent',text)
+        
+      }
   },
   watch:{
     'articles':function(obj){
