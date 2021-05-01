@@ -152,7 +152,8 @@ export default {
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
     console.log('ContentManagementContent,created',this.data,this.$el)
     console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
-
+    let obj = this.$props.articles;
+    
   },
   // beforeMount(){
   //     console.log("ContentManagementContent,beforeMount()",this.data,this.$el)

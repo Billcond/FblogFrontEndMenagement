@@ -114,6 +114,9 @@ export default {
                 return false;
               }
             })
+            this.visible = false;
+            this.$emit("goBackToList")
+            //修改完成之后应该展示之前的内容
         }
         if(this.$props.subCreateContent!=undefined){//说明是发布文章的子组件传递过来的内容
             this.content = this.$props.subCreateContent;

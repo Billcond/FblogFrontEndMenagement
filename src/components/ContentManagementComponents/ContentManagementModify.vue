@@ -24,7 +24,7 @@
         
         <!-- <button @click="markdown2Html">To HTML</button>
         <div v-html="html"></div> -->
-         <markDownEnd :sub-modify-msg="re"></markDownEnd>
+         <markDownEnd :sub-modify-msg="re" @goBackToList = "goBack"></markDownEnd>
   </a-layout-content>
 </template>
 
@@ -70,6 +70,12 @@ export default {
       this.re.content = obj;
     }
   },
+  methods:{
+    goBack(){
+      this.$emit("goToBack")
+    }
+  }
+  ,
 //      beforeCreate(){
 //        console.log("==============ContentEdit==============")
 //        console.log("============================")

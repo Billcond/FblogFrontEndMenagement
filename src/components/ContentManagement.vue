@@ -1,6 +1,6 @@
 <template >
 <a-layout-content v-if="modify">
-    <content-management-modify :articleContent="modifyArticle"></content-management-modify>
+    <content-management-modify :articleContent="modifyArticle" @goToBack = "handlerGoBack"></content-management-modify>
 </a-layout-content>
 <a-layout-content v-else>
     <content-management-header/>
@@ -33,6 +33,21 @@ export default {
         console.log("传递的值是",data)
         this.modifyArticle = data;//更改的内容 需要传递给子组件
         this.modify = true;
+    },
+    handlerGoBack(){
+      this.getRequest('/articles').then(resp=>{
+          if(resp){
+            console.log("ContentManagement,created 有响应------------------",resp.data)
+            this.allArticles = resp.data;
+            console.log('所有查询结果',this.allArticles)
+          }else{
+            console.log('无响应')
+            return false;
+          }
+        })
+
+      this.modify = false;
+
     }
   },
    beforeCreate(){
