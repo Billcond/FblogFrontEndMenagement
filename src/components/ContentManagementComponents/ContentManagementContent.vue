@@ -102,7 +102,25 @@ export default {
   },
   methods:{
       clickDelete(text,scope){//text scope 都是点击传回来的内容  将来在这里和数据库请求删除的连接
-          console.log('deleteDelete',text.title)
+          console.log('deleteDelete',text)
+          let deleteMessage={deleteMsg:text.title}
+          this.postRequest('/articles/delete',deleteMessage).then(resp=>{
+          if(resp){
+            console.log("有响应------------------",resp)
+          }else{
+            console.log('无响应')
+            return false;
+          }
+          })
+          //这里避免重新刷新数据库 这里直接将原来的数据进行删改
+          for(let i = 0;i<this.data.length;i++){
+            if(text===this.data[i]){
+              this.data.splice(i,1);
+              break;
+            }else{
+              alert('未知出错')
+            }
+          }
       },
   },
   watch:{
