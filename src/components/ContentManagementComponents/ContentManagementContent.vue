@@ -26,32 +26,41 @@ const columns = [
     key: 'name',
     slots: { title: 'customTitle' },
     scopedSlots: { customRender: 'name' },
+    width:150,
+    ellipsis:true
   },
   {
     title: '创建时间',
     dataIndex: 'createTime',
     key: 'age',
+    ellipsis:true
   },
   {
     title: '文章内容',
     dataIndex: 'content',
     key: 'address',//这里key变不变没关系  上面的dataIndex  关联了下面对应的数据
+    ellipsis:true,
+    width:200
   },
   {
     title: '文章种类',
     key: 'tags',
     dataIndex: 'tags', //
     scopedSlots: { customRender: 'tags' },
+    ellipsis:true
   },
   {
     title: '阅读喜欢比',
     key: 'action1',
-    dataIndex: 'count'
+    dataIndex: 'count',
+    ellipsis:true
   },
   {
     title: '操作',
     key: 'action',
     scopedSlots: { customRender: 'action' },
+    width:150,
+    ellipsis:true
   },
 ];
 
@@ -96,6 +105,23 @@ export default {
           console.log('deleteDelete',text.title)
       },
   },
+  watch:{
+    'articles':function(obj){
+          this.data = [];
+        //拿到之后更改模板的值
+        let index = 1;
+        for(let o of obj){
+          let temp = {};
+          temp.key = index++;
+          temp.title = o.title;
+          temp.createTime = o.createtime;
+          temp.content = o.context;
+          temp.count = o.seecount+'/'+o.likes;
+          temp.tags = [o.type]
+          this.data.push(temp)
+        }
+    }
+  },
   beforeCreate(){
       console.log('ContentManagementContent,beforeCreate',this.data,this.$el)
       //console.log("ContentManagementContent,beforecreated父组件传递过东西来了嘛!!!!==============",this.$props.articles) 报错了
@@ -103,17 +129,7 @@ export default {
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
     console.log('ContentManagementContent,created',this.data,this.$el)
     console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
-    this.data = [];
-    //拿到之后更改模板的值
-    for(let o of this.$props.articles){
-      let temp = {};
-      temp.title = o.title;
-      temp.createTime = o.createtime;
-      temp.content = o.context;
-      temp.count = o.seecount+'/'+o.likes;
-      temp.tags = [o.type]
-      this.data.push(temp)
-    }
+
   },
   beforeMount(){
       console.log("ContentManagementContent,beforeMount()",this.data,this.$el)
