@@ -28,6 +28,7 @@ export default {
   methods:{
       //编辑时间传递到父组件
     midifyEvent(data){//原本向通过父组件来实现兄弟组件的通信  现在看来  这里的父子还是有必要的  下一步通过Bus来实现兄弟的通信
+    //这里有对应的id的值
         alert("子组件传递父组件值成功")
         console.log("传递的值是",data)
         this.modifyArticle = data;//更改的内容 需要传递给子组件
@@ -47,7 +48,7 @@ export default {
           if(resp){
             console.log("ContentManagement,created 有响应------------------",resp.data)
             this.allArticles = resp.data;
-            console.log(this.allArticles)
+            console.log('所有查询结果',this.allArticles)
           }else{
             console.log('无响应')
             return false;

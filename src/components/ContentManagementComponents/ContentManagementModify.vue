@@ -64,19 +64,27 @@ export default {
       }
     }
   },
+  watch:{
+    'content':function(obj){
+      console.log("更新中的content",obj)
+      this.re.content = obj;
+    }
+  },
 //      beforeCreate(){
 //        console.log("==============ContentEdit==============")
 //        console.log("============================")
 //        console.log("============================")
 //     console.log('beforeCreate',this.data,this.$el)
 //   },
-  created(){//实例化好了 此时已经可以读取到原来的data中的数据了
+  created(){//实例化好了 此时已经可以读取到原来的data中的数据了  这就是需要更改的那一列中所有的数据信息
     console.log('========嘿嘿===========',this.$props.articleContent)
-    
     this.content = this.$props.articleContent.content;
     this.re.content = this.content;
     this.re.title = this.$props.articleContent.title;//获取到title
     this.re.buttonName = "确认编辑"
+    this.re.id = this.$props.articleContent.id;//获取对应的Id
+    //到这里为止  已经获取到了对应的内容
+    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",this.re.id)
   },
 //   beforeMount(){
 //       console.log("ContentEditbeforeMount()",this.data,this.$el)

@@ -98,7 +98,22 @@ export default {
         if(this.$props.subModifyMsg!=undefined){//说明是修改的子组件传递过来的内容
             this.content = this.$props.subModifyMsg.content;
             values.content = this.content;
+            values.id = this.$props.subModifyMsg.id;
+            // values.title = this.$props.subModifyMsg.title;//这里官方的表格组件会自动帮我们获取表格
+            //type 选中的时候会自动赋值
             alert("确认编辑")
+            console.log("~~~~~~~~~~~~~将要修改的values",values)
+            // console.log("~~~~~~~subModifyMsg.content",this.$props.subModifyMsg.content)
+
+           //修改成功了但是标题没有更改过来
+              this.postRequest('/articles/updateArticle',values).then(resp=>{
+              if(resp){
+                console.log("有响应------------------",resp)
+              }else{
+                console.log('无响应')
+                return false;
+              }
+            })
         }
         if(this.$props.subCreateContent!=undefined){//说明是发布文章的子组件传递过来的内容
             this.content = this.$props.subCreateContent;
@@ -126,7 +141,7 @@ export default {
         this.content = obj;
     },
     'subCreateContent':function(obj){//
-      console.log('父组件传递给过来更改的内容了嘛',obj)
+      console.log('---',obj)
     },
     'subModifyMsg':function(obj){
       console.log("父组件中修改的内容的穿过来的值",obj)

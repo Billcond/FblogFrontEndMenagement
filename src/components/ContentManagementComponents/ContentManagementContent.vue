@@ -116,25 +116,25 @@ export default {
             if(text===this.data[i]){
               this.data.splice(i,1);
               break;
-            }else{
-              alert('未知出错')
             }
           }
       },
       clickModify(text,scope){
         alert("编辑")
-        this.$emit('modifyevent',text)
+        //这里使用watch的原因，因为再created请求到相应的内容了 当请求的内容有变化，再watch中就可以获得得到的数据
+        this.$emit('modifyevent',text)//再wathch中已经将id的数据绑定过去了
         
       }
   },
   watch:{
     //异步获取数据后读取
     'articles':function(obj){
-          this.data = [];
+          this.data = [];//显示的数据
         //拿到之后更改模板的值
         let index = 1;
         for(let o of obj){
           let temp = {};
+          temp.id = o.id;//将id的值也保存下来
           temp.key = index++;
           temp.title = o.title;
           temp.createTime = o.createtime;
