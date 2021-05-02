@@ -152,8 +152,21 @@ export default {
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
     console.log('ContentManagementContent,created',this.data,this.$el)
     console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
-    let obj = this.$props.articles;
-    
+    if(this.$props.articles!=null){
+      let obj = this.$props.articles;
+      this.data=[];
+      for(o of obj){
+        let temp = {};
+            temp.id = o.id;//将id的值也保存下来
+            temp.key = index++;
+            temp.title = o.title;
+            temp.createTime = o.createtime;
+            temp.content = o.context;
+            temp.count = o.seecount+'/'+o.likes;
+            temp.tags = [o.type]
+            this.data.push(temp)
+      }
+    }
   },
   // beforeMount(){
   //     console.log("ContentManagementContent,beforeMount()",this.data,this.$el)
