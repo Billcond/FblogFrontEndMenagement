@@ -61,7 +61,7 @@ const CollectionCreateForm = {
               <a-radio value='Koa'>Koa</a-radio>
               <a-radio value='Vue'>Vue</a-radio>
               <a-radio value='React'>React</a-radio>
-              <a-radio value='Ohter'>其他</a-radio>
+              <a-radio value='Other'>其他</a-radio>
             </a-radio-group>
         </a-form-item>
       </a-form>

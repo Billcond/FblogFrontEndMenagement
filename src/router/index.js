@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import ContentEdit from '../components/ContentEdit'
 import ContentManagement from "../components/ContentManagement"
 import ContentStatistic from "../components/ContentStatistic"
+import HomeContent from "../components/HomeContent"
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +17,11 @@ const routes = [
     name: 'Home',
     component: Home,
     children:[
+      {
+        path:'/fblog/management',
+        name:'ContentEdit',
+        component:ContentEdit
+      },
       {
         path:'/fblog/management/edit',
         name:'ContentEdit',

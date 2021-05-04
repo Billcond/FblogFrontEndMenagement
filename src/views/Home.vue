@@ -1,6 +1,6 @@
 <template>
   <a-layout id="components-layout-demo-custom-trigger">
-    <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
+    <a-layout-sider v-model="collapsed" :trigger="null" collapsible style="min-height:100vh">
       <div class="logo" />
       <a-menu theme="dark" mode="inline" :default-selected-keys="['']">
         <a-menu-item key="1" @click="clickPublishBlog">
@@ -30,6 +30,7 @@
       <router-view/>
     </a-layout>
   </a-layout>
+
 </template>
 <script>
 export default {
@@ -66,8 +67,8 @@ export default {
 }
 
 #components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  height: 18px;
+
   margin: 16px;
 }
 </style>

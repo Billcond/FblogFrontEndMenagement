@@ -1,6 +1,5 @@
 <template>
   <div id="app"><!--说明就生命周期而言 组件和非组件还是不一样的-->
-    {{message}}
     <router-view/>
   </div>
 </template>
@@ -24,7 +23,7 @@ export default {
        console.log("App.vue============================")
        console.log("App.vue============================")
        console.log("App.vue============================")
-    console.log('beforeCreate',this.data,this.$el)
+      console.log('beforeCreate',this.data,this.$el)
   },
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
     console.log('App.vuecreated',this.data,this.$el)

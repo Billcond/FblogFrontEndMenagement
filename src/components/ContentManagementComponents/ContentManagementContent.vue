@@ -150,8 +150,8 @@ export default {
       //console.log("ContentManagementContent,beforecreated父组件传递过东西来了嘛!!!!==============",this.$props.articles) 报错了
   },
   created(){//实例化好了 此时已经可以读取到原来的data中的数据了
-    console.log('ContentManagementContent,created',this.data,this.$el)
-    console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
+    // console.log('ContentManagementContent,created',this.data,this.$el)
+    // console.log("ContentManagementContent,created父组件传递过东西来了嘛!!!!==============",this.$props.articles);
     if(this.$props.articles!=null){
       let obj = this.$props.articles;
       this.data=[];

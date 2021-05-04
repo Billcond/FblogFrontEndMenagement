@@ -36,14 +36,16 @@
 import markdownEditor from './ContentEditComponents/markDown'
 import markDownEnd from "./ContentEditComponents/markDownEnd"
 var content = `
-**this is test**
-* vue
-* element
-1. markdown
-2. editor
-## Simplemde
+# title
+## first
+- asadf
+- asdf
+- adsf
+代码请使用 两个或三个小的斜点
+ \`\`\` 代码  \`\`\`
 [link](https://www.baidu.com) 
-![图片](https://i.imgur.com/sZlktY7.png)
+![图片2](https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png)
+
 `
 export default {
   components: { markdownEditor,markDownEnd},
