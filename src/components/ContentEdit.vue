@@ -2,8 +2,6 @@
     <a-layout-content
         :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '80vh' }"
       >
-
-       
         <!--
                 这个组件中是编辑的内容
                 height 绑定了子组件prop中的值

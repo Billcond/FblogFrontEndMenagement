@@ -87,6 +87,8 @@ export default {
     handleCancel() {
       this.visible = false;
     },
+
+    //发布文章时候弹出的框
     handleCreate() {
       const form = this.$refs.collectionForm.form;
       form.validateFields((err, values) => {
@@ -116,15 +118,16 @@ export default {
             })
             this.visible = false;
             this.$emit("goBackToList")
-            //修改完成之后应该展示之前的内容
+            //修改完成之后应该展示之前的内容  将事件传递给父组件 进行显示之前的内容
         }
         if(this.$props.subCreateContent!=undefined){//说明是发布文章的子组件传递过来的内容
             this.content = this.$props.subCreateContent;
             values.content = this.content;
-
             this.postRequest('/articles/addArticle',values).then(resp=>{
             if(resp){
               console.log("有响应------------------",resp)
+              //更改成功了跳转到文章管理那边进行查看
+              this.$router.replace('/fblog/management/management')
             }else{
               console.log('无响应')
               return false;
