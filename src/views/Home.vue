@@ -50,6 +50,42 @@ export default {
     clickBlogStatistics(){
       this.$router.replace('/fblog/management/statistic')
     }
+  },
+  created(){
+    this.getRequest('/articles').then(resp=>{
+          if(resp){
+            this.$store.state.allArticles = resp.data;
+            this.$store.state.curArticles = resp.data;//因为是一开始当前数据就是全部数据
+            this.$store.state.javascriptArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="JavaScript"
+            })
+            this.$store.state.cssArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="CSS"
+            })
+            this.$store.state.htmlArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="HTML"
+            })
+            this.$store.state.nodeArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="Node"
+            })
+            this.$store.state.koaArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="Koa"
+            })
+            this.$store.state.vueArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="Vue"
+            })
+            this.$store.state.reactArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="React"
+            })
+            this.$store.state.otherArticles = this.$store.state.allArticles.filter((o)=>{
+              return o.type==="Other"
+            })
+          }else{
+            console.log('无响应')
+            return false;
+          }
+        })
+    console.log('ContentManagement,created',this.data,this.$el)
   }
 };
 </script>
