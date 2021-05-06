@@ -10,10 +10,15 @@
 
 # 部分截图显示
 
+
+# 博文管理
 ![image](https://user-images.githubusercontent.com/82869798/117261781-1fa83c00-ae83-11eb-87ec-4eacb4cb2e92.png)
+# 博文发布
 ![image](https://user-images.githubusercontent.com/82869798/117261782-1fa83c00-ae83-11eb-91f5-72af8fd10571.png)
-编辑  只修改   不增加
+# 博文统计
 ![image](https://user-images.githubusercontent.com/82869798/117262121-8168a600-ae83-11eb-847f-a2c68771589a.png)
-博文统计
-![image](https://user-images.githubusercontent.com/82869798/117262122-8168a600-ae83-11eb-86a6-33d26b3c872a.png)
+# 博文编辑
+## 这里确认编辑 只会更新数据库中的内容 并不会像博文发布一样  像数据库重新添加东西
+![image](https://user-images.githubusercontent.com/82869798/117262422-d3113080-ae83-11eb-9317-a66f4be39002.png)
+
 
